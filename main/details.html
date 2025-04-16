@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsul Detalları</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background: #555;
+        }
+
+        .btns {
+
+            display: flex;
+            margin: auto 40%;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .btns>p {
+
+            font-weight: bolder;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="productTitle"></h1>
+        <img id="productImage" src="" alt="Məhsul">
+        <h2 id="productPrice"></h2>
+        <div class="btns">
+            <button id="minus">
+                -
+            </button>
+
+            <p id="result">
+                1
+            </p>
+
+            <button id="plus">
+                +
+            </button>
+        </div>
+        <button onclick="goBack()">Geri qayıt</button>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        let price = document.getElementById("productPrice")
+        document.getElementById("productTitle").innerText = params.get("title");
+        price.innerText = "Qiymət: " + params.get("price");
+        document.getElementById("productImage").src = params.get("image");
+
+
+        let btnMinus = document.getElementById("minus")
+        let result = document.getElementById("result");
+        let btnPlus = document.getElementById("plus")
+        let count = 1;
+
+
+        let productPrice = parseInt(params.get("price")) || 0;
+
+        btnMinus.addEventListener('click', () => {
+
+
+            if (count !== 1) {
+
+                count--;
+                price.innerText = "Qiymət: " + (productPrice * count) + " AZN";
+                
+            }
+            result.textContent = count;
+        })
+
+
+        btnPlus.addEventListener('click', () => {
+
+
+            if (count !== 10) {
+                count++;
+
+                price.innerText = "Qiymət: " + (productPrice * count) + " AZN";
+
+            }
+
+            if (count == 10) {
+                alert("Stokda maksimum 10 eded var ")
+
+            }
+
+
+            result.textContent = count;
+        })
+
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+
+</html>

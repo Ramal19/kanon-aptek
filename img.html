@@ -1,0 +1,63 @@
+<!-- <!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Məhsul Detalları</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 15px;
+            font-size: 16px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 id="productTitle"></h1>
+        <img id="productImage" src="" alt="Məhsul">
+        <h2 id="productPrice"></h2>
+        <button onclick="goBack()">Geri qayıt</button>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById("productTitle").innerText = params.get("title");
+        document.getElementById("productPrice").innerText = "Qiymət: " + params.get("price");
+        document.getElementById("productImage").src = params.get("image");
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+</body>
+</html> -->
